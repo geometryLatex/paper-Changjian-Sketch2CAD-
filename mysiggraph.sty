@@ -1,0 +1,77 @@
+\usepackage{tabularx,booktabs} % For formal tables
+% import latex packages
+\graphicspath{{./images/}}
+%\usepackage{amsthm}
+%\usepackage[normalem]{ulem}
+%\usepackage{amssymb}
+\usepackage{color,hyphenat,balance}
+\usepackage[fleqn,tbtags]{mathtools}
+\usepackage{autonum}
+\usepackage{overpic}
+\usepackage{wrapfig}
+\usepackage{contour}
+\usepackage{microtype}
+\usepackage{multirow}
+
+% TOG prefers author-name bib system with square brackets
+\citestyle{acmauthoryear}
+%\setcitestyle{nosort,square} % nosort to allow for manual chronological ordering
+
+\usepackage[ruled]{algorithm2e} % For algorithms
+\renewcommand{\algorithmcfname}{ALGORITHM}
+\SetAlFnt{\small}
+\SetAlCapFnt{\small}
+\SetAlCapNameFnt{\small}
+\SetAlCapHSkip{0pt}
+
+%% abbr. definitions
+\def \cf {{cf.\thinspace}}
+\def \etal {{\emph{et al}.\thinspace}}
+\def \etc {{etc.\ }}
+
+%\newtheorem{theorem}{Theorem}
+%\newtheorem{prop}{Proposition}
+%\newtheorem{lemma}{Lemma}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\DeclareMathOperator*{\area}{area}
+\DeclareMathOperator*{\vol}{vol}
+\DeclareMathOperator*{\avg}{avg}
+\DeclareMathOperator*{\dev}{dev}
+\DeclareMathOperator*{\trace}{trace}
+\DeclareMathOperator*{\argmin}{arg\,min}
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\dis}{dis}
+\DeclareMathOperator*{\Div}{Div}
+\DeclareMathOperator*{\Min}{\textbf{minimize}}
+\DeclareMathOperator*{\sgn}{sgn}
+\DeclareMathOperator*{\round}{round}
+\DeclareMathOperator*{\key}{key}
+\DeclareMathOperator*{\myindex}{index}
+\DeclareMathOperator*{\mconv}{conv}
+\DeclareMathOperator*{\conv}{c}
+\DeclareMathOperator*{\deconv}{dc}
+\DeclareMathOperator*{\pooling}{p}
+\DeclareMathOperator*{\unpooling}{up}
+\DeclareMathOperator*{\maxpooling}{mp}
+\DeclareMathOperator*{\unmaxpooling}{ump}
+\DeclareMathOperator*{\avepooling}{ap}
+\DeclareMathOperator*{\unavepooling}{uap}
+\DeclareMathOperator*{\FC}{FC}
+\DeclareMathOperator*{\Unit}{U}
+\DeclareMathOperator*{\DUnit}{DU}
+\DeclareMathOperator*{\softmax}{softmax}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\textred}{\textcolor[rgb]{1.0,0.0,0.0}}
+\newcommand{\textblue}{\textcolor[rgb]{0.0,0.0,1.0}}
+\newcommand{\textpurple}{\textcolor[rgb]{1.0,0.0,1.0}}
+\newcommand{\textorenge}{\textcolor[rgb]{1.0,0.647,0.0}}
+\newcommand{\todo}[1]{\textred{(todo:#1)}}
+%\newcommand{\del}[1]{\sout{\textpurple{#1}}}
+%\newcommand{\note}[1]{\textorenge{#1}}
+\newcommand{\rev}[1]{\textpurple{#1}}
+%\newcommand{\rev}[1]{#1}
+
+\def \mS {\mathbf{S}}
+
+\newcommand{\name}{Sketch2CAD\xspace}
+
