@@ -40,4 +40,6 @@ Other than these points mentioned above, we output the primitives with orders th
 
 As shown in Fig. \ref{fig:pipeline}, we exploit Transformer as our network backbone and ask it to do the stroke grouping and primitive parameter regression tasks simultaneously, where the two tasks can help each other. Having the stroke groups, the fitted primitive can in return help correct some labeling errors, so that we can construct the golden labels used in the transformer training that is usually inaccessible at testing time. In this way, we naturally solve the teacher-forcing gap for Transformer training and testing.
 
+Primitive fitting from user strokes is a non-trivial task, especially the roughness of the user drawn will greatly affects the fitting quality. We thus resort to the Transformer to help suggest the primitive type, pose, shape, etc. as the starting point and apply the 2D-3D registration algorithm to get the resulting shape faithfully.
+
 After obtaining the primitives, regularity constraints, e.g., edge orientation alignment, center alignment, positional snapping should be applied to guarantee the final shape with high precision and regularity.
