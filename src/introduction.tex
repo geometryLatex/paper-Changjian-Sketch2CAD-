@@ -1,1 +1,43 @@
-Sketch2CAD \cite{li2020sketch2cad}, Geomsemantic snapping \cite{shtof2013geosemantic}
+\section{Introduction}
+
+\begin{figure*}[t]
+    \centering
+    \begin{overpic}[width=\linewidth]{images/user_drawing_demo.png}
+    \end{overpic}
+    \caption{Motivation: user drawing demo with several steps. Users with varying expertise demonstrate different drawing pattern. Less skilled users draw from left to right or top to bottom, part-by-part, while skilled users make use of the construction lines frequently.}
+    \label{fig:motivation}
+\end{figure*}
+
+\begin{figure*}[t]
+    \centering
+    \begin{overpic}[width=0.9\linewidth]{images/pipeline.png}
+    \end{overpic}
+    \caption{Rough pipeline with iterative golden prediction: decoder prediction, primitive fitting, line group label prediction, golden label preparation.}
+    \label{fig:pipeline}
+\end{figure*}
+
+\textbf{Motivation}:
+
+Followup work of Sketch2CAD \cite{li2020sketch2cad}, and also the user drawing demo in Fi. \ref{fig:motivation} motivates our problem setting. Compared with Sketch2CAD, we hope Sketch2CAD++ to have the following propertiese
+\begin{itemize}
+    \item No need to do pre-decomposition
+    \item No need to know what ops are supported, directly draw the final full shape
+    \item Deal with Sequential input
+    \item Prediction from partial data
+    \item Generate a set of output operations/primitives for one single drawing part
+\end{itemize}
+
+
+Fully automatic and much advanced Geomsemantic snapping \cite{shtof2013geosemantic}: we are facing very similar cores challenges for modeling 3D shape from user sketches, including \emph{segmentation, recognition and reconstruction}. In Geosemantic snapping, they ask users to do the manual segmentation by clicking strokes, and the primitive recognition by dragging and dropping template shapes. Instead, we do the automatic:
+\begin{itemize}
+    \item segmentation via grouping,
+    \item recognition via primitive parameter regression,
+    \item reconstruction via primitive fitting with geometric priors.
+\end{itemize}
+Other than these points mentioned above, we output the primitives with orders that illustrates the construction steps. This is beyond the ability of the state-of-the-art sketch-based reconstruction works.
+
+\noindent\textbf{Technical Pipeline}:
+
+As shown in Fig. \ref{fig:pipeline}, we exploit Transformer as our network backbone and ask it to do the stroke grouping and primitive parameter regression tasks simultaneously, where the two tasks can help each other. Having the stroke groups, the fitted primitive can in return help correct some labeling errors, so that we can construct the golden labels used in the transformer training that is usually inaccessible at testing time. In this way, we naturally solve the teacher-forcing gap for Transformer training and testing.
+
+After obtaining the primitives, regularity constraints, e.g., edge orientation alignment, center alignment, positional snapping should be applied to guarantee the final shape with high precision and regularity.
